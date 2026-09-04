@@ -1,180 +1,38 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Coin Catcher</title>
-
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game 2D - Google Sheets</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<div class="container">
+  <div id="auth-screen" class="card">
+    <h2>Game Jump 2D</h2>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <div class="btn-group">
+      <button onclick="login()">Login</button>
+      <button onclick="register()">Daftar</button>
+    </div>
+    <p id="auth-msg"></p>
+  </div>
 
-    <!-- LOGIN -->
-    <section id="loginPage" class="page">
+  <div id="game-screen" class="hidden">
+    <div class="info-bar">
+      <span>Pemain: <strong id="player-name"></strong></span>
+      <span>Skor: <strong id="score">0</strong></span>
+    </div>
+    <canvas id="gameCanvas" width="600" height="200"></canvas>
+    <p><small>Tekan <strong>SPASI</strong> untuk melompat</small></p>
 
-        <div class="card">
+    <div class="leaderboard-box">
+      <h3>5 Skor Tertinggi</h3>
+      <ol id="leaderboard-list"></ol>
+    </div>
+  </div>
 
-            <h1>🪙 Coin Catcher</h1>
-
-            <p class="subtitle">
-                Tangkap koin sebanyak mungkin!
-            </p>
-
-            <input
-                type="text"
-                id="username"
-                placeholder="Username"
-                autocomplete="username"
-            >
-
-            <input
-                type="password"
-                id="password"
-                placeholder="Password"
-                autocomplete="current-password"
-            >
-
-            <button onclick="login()">
-                MASUK
-            </button>
-
-            <button class="secondary" onclick="showRegister()">
-                DAFTAR AKUN
-            </button>
-
-            <p id="loginMessage" class="message"></p>
-
-        </div>
-
-    </section>
-
-
-    <!-- REGISTER -->
-    <section id="registerPage" class="page hidden">
-
-        <div class="card">
-
-            <h1>Daftar Akun</h1>
-
-            <input
-                type="text"
-                id="regUsername"
-                placeholder="Username"
-            >
-
-            <input
-                type="password"
-                id="regPassword"
-                placeholder="Password"
-            >
-
-            <input
-                type="password"
-                id="regPassword2"
-                placeholder="Ulangi Password"
-            >
-
-            <button onclick="register()">
-                BUAT AKUN
-            </button>
-
-            <button class="secondary" onclick="showLogin()">
-                KEMBALI
-            </button>
-
-            <p id="registerMessage" class="message"></p>
-
-        </div>
-
-    </section>
-
-
-    <!-- MENU -->
-    <section id="menuPage" class="page hidden">
-
-        <div class="card">
-
-            <h1>🪙 Coin Catcher</h1>
-
-            <p>
-                Halo, <b id="playerName"></b>
-            </p>
-
-            <button onclick="startGame()">
-                ▶ MULAI GAME
-            </button>
-
-            <button onclick="showLeaderboard()">
-                🏆 LEADERBOARD
-            </button>
-
-            <button class="secondary" onclick="logout()">
-                KELUAR
-            </button>
-
-        </div>
-
-    </section>
-
-
-    <!-- GAME -->
-    <section id="gamePage" class="page hidden">
-
-        <div class="gameHeader">
-
-            <span>
-                Pemain:
-                <b id="gamePlayer"></b>
-            </span>
-
-            <span>
-                Skor:
-                <b id="score">0</b>
-            </span>
-
-        </div>
-
-        <canvas id="gameCanvas"></canvas>
-
-        <p class="gameInstruction">
-            Gunakan tombol ← → atau sentuh layar untuk bergerak.
-            Tangkap koin!
-        </p>
-
-        <button class="secondary" onclick="endGame()">
-            KELUAR GAME
-        </button>
-
-    </section>
-
-
-    <!-- LEADERBOARD -->
-    <section id="leaderboardPage" class="page hidden">
-
-        <div class="card leaderboardCard">
-
-            <h1>🏆 Leaderboard</h1>
-
-            <div id="leaderboard">
-                Memuat data...
-            </div>
-
-            <button onclick="showMenu()">
-                KEMBALI
-            </button>
-
-        </div>
-
-    </section>
-
-</div>
-
-
-<script src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
 </html>
